@@ -1,0 +1,83 @@
+:root{
+  --bg:#0b1116;
+  --fg:#ffffff;
+  --chip:rgba(255,255,255,.06);
+  --chip-b:#1f2233;
+  --chip-h:#27324a;
+  --muted:#9fb1bf;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--fg);
+  background:
+    radial-gradient(70% 80% at 100% 0%, rgba(67,97,238,.06), rgba(0,0,0,0) 50%),
+    radial-gradient(80% 80% at 0% 100%, rgba(56,189,248,.06), rgba(0,0,0,0) 45%),
+    var(--bg);
+  font:16px/1.55 Georgia, Cambria, "Times New Roman", Times, serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  min-height:100vh;
+  display:grid;
+  place-items:start center;
+  padding:5rem 1.25rem;
+}
+
+.row{
+  display:grid;
+  grid-template-columns: 92px auto;
+  column-gap:18px;
+  align-items:start;
+}
+
+.avatar{
+  width:92px; height:92px; border-radius:999px; object-fit:cover;
+  border:1px solid var(--chip-b); background:#0e141a;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 26px rgba(0,0,0,.45);
+  margin-top:4px;
+}
+
+.bio{display:flex; flex-direction:column}
+
+.name{
+  margin:0 0 .15rem 0;
+  font-weight:700; font-size:28px; letter-spacing:.2px;
+}
+
+.urdu{
+  margin:.1rem 0 .35rem 0; color:#e9f2ff; opacity:.85;
+  font-size:18px; font-weight:600;
+}
+
+.loc{margin:.35rem 0 .25rem 0; color:var(--muted); display:flex; align-items:center; gap:.4rem}
+.ico{width:18px; height:18px; vertical-align:-3px; opacity:.95}
+
+.links{
+  display:grid;
+  grid-template-columns:auto auto; /* two columns */
+  gap:12px;
+  margin-top:14px;
+}
+
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 14px; border-radius:999px;
+  background:var(--chip); border:1px solid var(--chip-b);
+  text-decoration:none; color:#d7e5f3; font-weight:500;
+  transition:background .15s ease, border-color .15s ease, transform .05s ease;
+}
+.pill:hover{background:var(--chip-h); border-color:#33405c}
+.pill:active{transform:translateY(1px)}
+.full{grid-column:1 / -1} /* email spans full width */
+
+@media (max-width:640px){
+  .wrap{padding:2.5rem 1rem}
+  .row{grid-template-columns:72px auto}
+  .avatar{width:72px; height:72px}
+  .name{font-size:24px}
+  .urdu{font-size:16px}
+}
