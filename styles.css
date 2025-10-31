@@ -1,9 +1,8 @@
 :root{
   --bg:#0b1116;
   --fg:#ffffff;
-  --chip:rgba(255,255,255,.06);
-  --chip-b:#1f2233;
-  --chip-h:#27324a;
+  --chip:rgba(255,255,255,.04);
+  --chip-h:rgba(255,255,255,.10);
   --muted:#9fb1bf;
 }
 
@@ -11,81 +10,109 @@
 html,body{height:100%}
 body{
   margin:0;
-  color:var(--fg);
   background:
-    radial-gradient(70% 80% at 100% 0%, rgba(67,97,238,.06), rgba(0,0,0,0) 50%),
-    radial-gradient(80% 80% at 0% 100%, rgba(56,189,248,.06), rgba(0,0,0,0) 45%),
+    radial-gradient(70% 80% at 100% 0%, rgba(67,97,238,.03), rgba(0,0,0,0) 50%),
+    radial-gradient(80% 80% at 0% 100%, rgba(56,189,248,.03), rgba(0,0,0,0) 45%),
     var(--bg);
-  /* 🔽 new font stack */
-  font:16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color:var(--fg);
+  font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
 .wrap{
   min-height:100vh;
-  display:grid;
-  place-items:start center;
-  padding:5rem 1.25rem;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:4rem 1.25rem;
 }
 
-.row{
-  display:grid;
-  grid-template-columns: 92px auto;
-  column-gap:18px;
-  align-items:start;
+.card{
+  width:min(720px,100%);
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
 }
 
 .avatar{
-  width:92px; height:92px; border-radius:999px; object-fit:cover;
-  border:1px solid var(--chip-b); background:#0e141a;
-  box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 26px rgba(0,0,0,.45);
-  margin-top:4px;
+  width:70px; height:70px;
+  border-radius:999px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.05);
+  background:#0f1419;
+  box-shadow:0 8px 26px rgba(0,0,0,.32);
+  flex:0 0 70px;
 }
 
-.bio{display:flex; flex-direction:column}
+/* right side */
+.content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;              /* tighter */
+}
+
+/* name row with Urdu on the right */
+.header-line{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:.75rem;
+}
 
 .name{
-  margin:0 0 .15rem 0;
-  font-weight:700; font-size:28px; letter-spacing:.2px;
+  margin:0;
+  font-weight:600;
+  font-size:19px;
+  line-height:1.1;
 }
 
 .urdu{
-  margin: .1rem 0 .35rem 0;
-  color: #e9f2ff;
-  opacity: .85;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: right;          /* <-- right align */
-  align-self: flex-end;       /* <-- push it to the right inside the column */
-  min-width: 140px;           /* optional: keeps it from wrapping too soon */
+  margin:0;
+  font-size:14px;
+  color:#e9f2ff;
+  opacity:.9;
+  text-align:right;
+  line-height:1.1;
 }
 
+.loc{
+  display:flex;
+  align-items:center;
+  gap:.38rem;
+  font-size:13.8px;
+  color:var(--muted);
+  margin:0;               /* tighter */
+}
+.ico{width:16px; height:16px; opacity:.95}
 
-.loc{margin:.35rem 0 .25rem 0; color:var(--muted); display:flex; align-items:center; gap:.4rem}
-.ico{width:18px; height:18px; vertical-align:-3px; opacity:.95}
-
+/* pills: 2 per row, same as before */
 .links{
   display:grid;
-  grid-template-columns:auto auto; /* two columns */
-  gap:12px;
-  margin-top:14px;
+  grid-template-columns:repeat(2, max-content);
+  column-gap:1.1rem;
+  row-gap:.6rem;
+  margin-top:.4rem;       /* tighter above pills */
 }
 
 .pill{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:9px 14px; border-radius:999px;
-  background:var(--chip); border:1px solid var(--chip-b);
-  text-decoration:none; color:#d7e5f3; font-weight:500;
-  transition:background .15s ease, border-color .15s ease, transform .05s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.45rem 1rem .44rem;
+  border-radius:999px;
+  background:var(--chip);
+  text-decoration:none;
+  color:#f3f4f5;
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  transition:background .12s ease;
 }
-.pill:hover{background:var(--chip-h); border-color:#33405c}
-.pill:active{transform:translateY(1px)}
-.full{grid-column:1 / -1} /* email spans full width */
+.pill:hover{background:var(--chip-h)}
 
-@media (max-width:640px){
-  .wrap{padding:2.5rem 1rem}
-  .row{grid-template-columns:72px auto}
-  .avatar{width:72px; height:72px}
-  .name{font-size:24px}
-  .urdu{font-size:16px}
+@media (max-width:600px){
+  .card{flex-direction:row}
+  .header-line{flex-wrap:wrap}
+  .links{grid-template-columns:1fr}
 }
