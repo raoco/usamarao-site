@@ -16,7 +16,8 @@ body{
     radial-gradient(70% 80% at 100% 0%, rgba(67,97,238,.06), rgba(0,0,0,0) 50%),
     radial-gradient(80% 80% at 0% 100%, rgba(56,189,248,.06), rgba(0,0,0,0) 45%),
     var(--bg);
-  font:16px/1.55 Georgia, Cambria, "Times New Roman", Times, serif;
+  /* 🔽 new font stack */
+  font:16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -49,9 +50,16 @@ body{
 }
 
 .urdu{
-  margin:.1rem 0 .35rem 0; color:#e9f2ff; opacity:.85;
-  font-size:18px; font-weight:600;
+  margin: .1rem 0 .35rem 0;
+  color: #e9f2ff;
+  opacity: .85;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;          /* <-- right align */
+  align-self: flex-end;       /* <-- push it to the right inside the column */
+  min-width: 140px;           /* optional: keeps it from wrapping too soon */
 }
+
 
 .loc{margin:.35rem 0 .25rem 0; color:var(--muted); display:flex; align-items:center; gap:.4rem}
 .ico{width:18px; height:18px; vertical-align:-3px; opacity:.95}
